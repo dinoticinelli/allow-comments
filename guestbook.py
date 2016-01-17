@@ -79,6 +79,24 @@ class MainPage(webapp2.RequestHandler):
 # [END main_page]
 
 
+class ErrorHandler(MainPage):
+    def get(self):
+        error = self.request.get('error','')
+        template = JINJA_ENVIRONMENT.get_template('notes.html')
+        self.render('notes.html', 'error','')
+
+class Handler(webapp2.RequestHandler):
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
+
+    def render_str(self, template, **params):
+        t = jinja_env.get_template(template)
+        return t.render(params)
+
+    def render(self, template, **kw):
+        self.write(self.render_str(template, **kw))
+
+
 class Guestbook(webapp2.RequestHandler):
 
     def post(self):
@@ -119,4 +137,5 @@ class Guestbook(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/error', ErrorHandler),
 ], debug=True)

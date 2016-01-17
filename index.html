@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <title>Dino's IPND Notes</title>
+  </head>
+
+  <body style="margin: 0">
+    <h1 style="background-color: #191970; color: #F8F8FF; margin: 0 height: 50px">
+      Stage 4 Notes
+    </h1>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+    <!-- Begin Comments section -->
+    <h5>THOUGHTS ON DINO'S STAGE 4 NOTES</h5>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.email }}
+          {% if user and user.user_id() == greeting.author.identity %}
+            (You)
+          {% endif %}
+        </b> wrote:
+      {% else %}
+       Anonymous wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <h2>Post a Comment</h2>
+    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="10" cols="60"></textarea></div>
+      {% if error %}
+        <span style="color: red">{{ error }}</span>
+      {% endif %}
+      <div><input type="submit" value="Post Comment"></div>
+    </form>
+    <br>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    <br>
+    <br>
+
+  </body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,188 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<form>
+	<h2>Lesson 4.1: Introduction to Networks</h2>
+	<h3>Networks</h3>
+	<p>
+		A network is a group of entities that can communicate, even though they are not all directly connected.
+	</p>
+	<p>
+		To make a network, we need the following:
+		<ul>
+			<li>Way to encode and interpret messages<br>
+			Internet: message > bits > electrons/photons</li>
+			<li>Way to route messages<br>
+			Internet: routers figure out next hops</li>
+			<li>Rules for deciding who gets to use resources<br>
+			Internet: best effort service</li>
+		</ul>
+	</p>
+	<h3>Measuring Networks</h3>
+	<p>
+		<b>Latency</b> is the time it takes a message to get from a source to a destination. It is a unit of time, most likely measured in milliseconds (1,000 milliseconds in 1 second).
+	</p>
+	<p>
+		<b>Bandwidth</b> is the amount of information that can be transmitted per unit of time. It is measured in units of information divided by units of time, for example in bits per second.
+	</p>
+	<p>
+		A <em>bit</em> is the smallest unit of information. In programming, we think of bits – yes and no responses of information – as <b>0</b>s and <b>1</b>s, whereas 0 means <em>no</em> and 1 means <em>yes</em>. We can transmit anything we want by using bits.
+	</p>
+	<h3>Protocols</h3>
+	<p>
+		A <b>protocol</b> is a set of rules that people agree to that tell you how two entities can talk to each other. For the web, the protocol gives rules about how a client (web browser) and a server talk to each other (web server) – HTTP (Hypertext Transfer Protocol).
+	</p>
+	<h2>Lesson 4.2: Make the Internet Work for You</h2>
+	<h3>HTML Refresher</h3>
+	<p>
+		<b><a href=”https://www.udacity.com/course/viewer#!/c-nd000/l-4169998949/m-48748025”>This</a></b> is a good video for a refresher on HTML structure.
+	</p>
+	<h3>Query Parameters (GET parameters)</h3>
+	<p>
+		Introduced by a <b>?</b> and followed by the parameter with its name and value being what appears after the question mark. We can introduce more query parameters by adding an <b>&</b> after the initial query parameter.
+	</p>
+	<h3>HTTP Requests</h3>
+	<p>
+		When your browser makes a request to a web server, the first thing it sends is the request line, which has three main parts:
+		<ul>
+			<li>Method: what type of request we're making (GET and POST are the most popular methods)</li>
+			<li>Path: the actual document we're requesting from the server</li>
+			<li>Version: always <b>HTTP/[version number]</b> (we'll be dealing mostly with version 1.1, and sometimes with 1.0)</li>
+		</ul>
+	</p>
+	<p>
+		The next thing your browser sends to a web server when making a request are a series of <b>Headers</b>. Headers always include the host name (Host: [host-name]) and a user agent (user-agent: [web browser + version]), and can include anything else you want that will improve meta data and communication between computers.
+	</p>
+	<h3>HTTP Responses</h3>
+	<p>
+		Web servers respond to HTTP requests with a <em>status line</em>, which looks like <code>HTTP/1.1 200 Ok</code>, where "200" is a status code and "Ok" is a reason phrase.
+	</p>
+	<p>
+		Common Status Codes:
+		<ul>
+			<li>200 (Ok)</li>
+			<li>302 (Found)</li>
+			<li>404 (Not found)</li>
+			<li>500 (Server Error)</li>
+		</ul>
+	</p>
+	<p>
+		Status lines are followed by a series of <b>Headers</b>. <b>Date</b> is always returned, and can also include <b>Server</b> (not a good idea to include, though), <b>Content-Type</b> and <b>Content-Length</b> for example.
+	</p>
+	<h3>Servers</h3>
+	<p>
+		The purpose of a server is to respond to HTTP requests. There are two main classifications for the type of response a server will do: <b>static</b> and <b>dynamic</b>.
+	</p>
+	<p>
+		<em>Static</em> requests are pre-written files or images that are returned by the server. <em>Dynamic</em> requests are built dynamically on the fly, and are essentially <b>web applications</b>.
+	</p>
+	<h2>Lesson 4.3: Forms</h2>
+	<h3>HTML Forms</h3>
+	<p>
+		There is a <b>form</b> tag in HTML that looks like <code>&lt;form&gt; ...code... &lt;/form&gt;</code>. There are a few things that can go into a <em>form</em> tag.
+	</p>
+	<h3>Input Tag</h3>
+	<p>
+		One thing we can put in a <b>form</b> tag is an <b>input tag</b>, which looks like <code>&lt;input&gt;</code> and displays a text field. Input can also take in a couple of attributes, including:
+		<ul>
+			<li>name– password–type</li>
+			<li>action–checkbox–radio buttons–value–label element</li>
+			<li>dropdown</li>
+		</ul>
+	</p>
+	<h2>Lesson 4.4: Modulus and Dictionaries</h2>
+	<h3>Modulus Operator</h3>
+	<p>
+		This is an operator (like +, -, *, or /) that every programming language has. We use the <b>modulus operator</b> to get our output in the correct range, written with a <b>%</b>. What modulus does is take a number and map it to a range based on the remainder when you divide that number: <code>[number] % [modulus] —> [remainder]</code>. So, 14%12—>2. This <b><a href=“https://www.udacity.com/course/viewer#!/c-nd000/l-4181088694/m-3921928554”>video</a></b> does a good job of explaining the modulus operator.
+	</p>
+	<h3>Dictionaries</h3>
+	<p>
+		A <b>dictionary</b> is a data structure with key:value pairs, where we have a series of keys and an associated value for each key. It is created using <b>{}</b>. Dictionaries are mutable, meaning we can always change its contents. The <em>values</em> in a dictionary can be anything, even other dictionaries. This <b><a href=“https://www.udacity.com/course/viewer#!/c-nd000/l-4181088694/m-48683768”>video</a></b> gives an example of values in a dictionary being other dictionaries, and what you can do with that.
+	</p>
+	<h2>Lesson 4.5: Working with Google App Engine</h2>
+	<h3>Get vs. Post</h3>
+	<p>
+		Differences between <b>get</b> parameters and <b>post</b> parameters include the following:
+	</p>
+	<p>
+		Get:
+		<ul>
+			<li>Parameters are included in the URL</li>
+			<li>Used for fetching documents</li>
+			<li>Maximum URL length</li>
+			<li>Ok to cache</li>
+			<li>Shouldn’t change the server</li>
+		</ul>
+	</p>
+	<p>
+		Post:
+		<ul>
+			<li>Parameters are included in the body</li>
+			<li>Used for updating data (making changes to data stored on a server)</li>
+			<li>No maximum URL length</li>
+			<li>Not ok to cache</li>
+			<li>Ok to change the server</li>
+		</ul>
+	</p>
+	<h2>Lesson 4.6: Validation</h2>
+	<h3>Validation</h3>
+	<p>
+		<b>Validation</b> basically means verifying on the server side that what we received is what we expected to receive. Your server can receive junk, so it needs to be smart enough to deal with somebody sending input/parameters to it that can break it down or exploit it.
+	</p>
+	<p>
+		The steps we need to take in validation include:
+		<ol>
+			<li>verify the user’s input</li>
+			<li>on error, render form again</li>
+			<li>include error message</li>
+		</ol>
+	</p>
+	<p>
+		Validation can also improve the user experience by providing feedback to the user, normally in the form of an error message when invalid input is given. This feedback can help the average user by telling them what type of input they are expected to provide.
+	</p>
+	<h3>HTML Escaping</h3>
+	<p>
+		HTML allows you to “escape” certain special characters, or <em>change</em> them. If we want our HTML to behave like HTML, then we don’t escape it. If we want to display HTML code but not have it behave like HTML, then we need to escape it. It’s always best practice to use built-in modules for escaping HTML.
+	</p>
+	<h2>Lesson 4.7: HTML Templates</h2>
+	<h3>Templates</h3>
+	<p>
+		<b>Templates</b> generally refer to a library, where a template library is a library to build complicated <em>strings</em> (which normally refers to HTML). Templates allow us to:
+		<ul>
+			<li>Separate different types of code</li>
+			<li>Make more readable code</li>
+			<li>Make more secure websites</li>
+			<li>Make HTML that is easier to modify</li>
+			<li>Avoid repetition of repeating elements in our code; this is helpful because it simplifies code, eliminates unnecessary work and helps us avoid silly errors</li>
+		</ul>
+	</p>
+	<p>
+		Jinja is a <b>templating language</b> (jinja2 template library), which is built into Google App Engine. More information about jinja2 can be found at <b>ninja.pocoo.org</b>.
+	</p>
+	<h3>Helpful Tips</h3>
+	<ul>
+		<li>Always <b>automatically</b> escape variables when possible (via ‘autoescape = True’ in jinja, for example)</li>
+		<li>Minimize code in templates</li>
+		<li>Minimize HTML in code</li>
+	</ul>
+	<h2>Lesson 4.8: Databases</h2>
+	<h3>Databases</h3>
+	<p>
+		<b>Databases</b> are where you actually store all of this information you collect from users, and is the final piece that allows us to build a fully functional web app. Specifically, a database is a program that stores and retrieves (large amounts of structured) data.
+	</p>
+	<h3>Tables</h3>
+	<p>
+		In general, databases are made up of a series of tables that contain large amounts of structured data.
+	</p>
+	<h3>Why Databases?</h3>
+	<p>
+		Databases exist to take large chunks of data and answer queries on them in a reasonable amount of time without having to write a lot of custom code.
+	</p>
+	<h3>Google App Engine Datastore</h3>
+	<p>
+		In Google App Engine Datastore, <em>tables</em> are called <b>entities</b>. In entities, columns are not fixed, all entities have an ID, and entities have parents/ancestors (which help to get around some of the problems with consistency).
+	</p>
+</form>
+
+{% endblock %}
